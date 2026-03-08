@@ -1,1 +1,18 @@
 # black-forest-labs-FLUX.1-schnell
+
+## Google Colab Link
+- https://colab.research.google.com/drive/1ihvRnLavwOtqEhpSR7K9a4s_daQRLKMs?usp=sharing
+- Set the HF_TOKEN environment variable and run the model with already given prompt for blind spot testing.
+
+## Discussion
+- I was facing error `OutOfMemoryError: CUDA out of memory. Tried to allocate 22.15 GiB. GPU 0 has a total capacity of 14.56 GiB of which 14.46 GiB is free.` That's why, I ran the model with API calling.
+- `dataset` directory of this repositoary contains images of Analog Clocks showing different time. These are some samples which this model can't produce with any prompt explaining the time.
+- The reason most of the model can't produce such images is because the input images in the dataset mostly contains clock images from the internet showing time 10:10 (hh:mm).
+- One simple approach to create a diverse dataset of almost all possible time for analog clocks is as follow:
+    - Assume we need to generate 12*60 = 720 images to cover 12 hours and 60 minutes for each hour.
+    - We can hire user to generate this data. Each user will submit 720 images of his/her clock along with prompt/time (text) for each image.
+    - It means, 72000 diverse dataset images from 100 users.
+    - We can then finetune such model with such images.
+    - Moreover, we may preprocess all the input prompts(text) by creating variations of such prompts using any other text-to-text LLM. It will add robustness into model for creating same/desired image with a little bit rephrased text prompt.
+- We can also create a synthetic dataset of such clocks in Python. But I need to look into this one to explore different libraries available for such kind of tasks.
+- That's it from me.
