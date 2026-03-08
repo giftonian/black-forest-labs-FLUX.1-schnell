@@ -6,7 +6,7 @@
 
 ## Discussion
 - I was facing error `OutOfMemoryError: CUDA out of memory. Tried to allocate 22.15 GiB. GPU 0 has a total capacity of 14.56 GiB of which 14.46 GiB is free.` That's why, I ran the model with API calling.
-- `dataset` directory of this repositoary contains images of Analog Clocks showing different time. These are some samples which this model can't produce with any prompt explaining the time.
+- `clocks_dataset` directory of this repositoary contains images of Analog Clocks in the *images* subdirectory and *metadata.csv* ground truth file. These are some samples which this model can't produce with any prompt explaining the time.
 - The reason most of the model can't produce such images is because the input images in the dataset mostly contains clock images from the internet showing time 10:10 (hh:mm).
 - One simple approach to create a diverse dataset of almost all possible time for analog clocks is as follow:
     - Assume we need to generate 12*60 = 720 images to cover 12 hours and 60 minutes for each hour.
